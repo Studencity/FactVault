@@ -1,0 +1,45 @@
+{
+  "name": "Right Click Test",
+  "version": "1.0.0",
+  "description": "BlockerX - Block Site Ex & Keyword Blocker. X-blocker for chrome. Stay focused & Increase your productivity.",
+  "manifest_version": 3,
+  "permissions": [
+    "storage",
+    "idle",
+    "tabs",
+    "unlimitedStorage",
+    "contextMenus"
+  ],
+  "icons": {
+    "16": "/assets/main/icon-16x16.png",
+    "48": "/assets/main/icon.png",
+    "128": "/assets/main/icon.png"
+  },
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Right Click",
+    "default_icon": "/assets/main/icon.png",
+    "default_popup": "Popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["ContentScripts/scriptWhileBrowsing.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "*.html", "*.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "incognito": "split"
+}
